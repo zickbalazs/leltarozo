@@ -2,7 +2,7 @@
     <NavBar />
     <main class="d-flex flex-column align-items-center justify-content-center">
         <div class="col-lg-10 col-11">
-            <h2 class="mb-5">Üdv!</h2>
+            <h2 class="mt-3">Üdv!</h2>
             <div class="row">
                 <DashCard v-for="card in DashCardItems" :card-data="card" />
             </div>
@@ -14,37 +14,19 @@
 </style>
 <script lang="ts">
 import NavBar from '@/views/NavBar.vue';
-import DashCard from './DashCard.vue';
-import { DashCardItem } from '../classes/DashCardItem';
-import { InventoryItem } from '../classes/InventoryItem';
-import axios from 'axios';
+import DashCard from '@/components/DashCard.vue';
+import { DashCardItem } from '@/classes/DashCardItem';
 export default {
     data() {
         return {
             DashCardItems: [
-                new DashCardItem("Új tétel felvétele", "plus", ["#00a62c", "#005416"]),
-                new DashCardItem("Tételek megtekintése", "eye", ["#00a62c", "#005416"]),
-                new DashCardItem("Tételek szerkesztése", "wrench", ["#00a62c", "#005416"]),
-                new DashCardItem("Tételek törlése", "trash2", ["#00a62c", "#005416"]),
+                new DashCardItem("Új tétel felvétele", "plus-lg", ["#00A62C", "#005416"]),
+                new DashCardItem("Tételek megtekintése", "eye", ["#85E0D4", "#C7AABE"]),
+                new DashCardItem("Tételek szerkesztése", "wrench", ["#FFBF7A", "#8C894C"]),
+                new DashCardItem("Tételek törlése", "trash2", ["#C11E38", "#220B34"]),
             ],
-            Inventory: []
         }
     },
-    created() {
-        axios.get('http://localhost/2-14-SZFT/Backend/PhP/api/database.php', {
-            params: {
-                "table": "tetelek"
-            },
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(res => {
-            this.Inventory = res.data;
-            console.log(res.data);
-        }).catch(err => {
-            console.log(err.data);
-        })
-    },
-    components: { NavBar, DashCard },
+    components: { NavBar, DashCard }
 }
 </script>

@@ -8,7 +8,7 @@ export class InventoryItem {
     constructor(data:any){
         this.ID = data.ID;
         this.name = data.name;
-        this.leltar_nr = data.leltar_nr;
+        this.leltar_nr = data.leltart_nr;
         this.price = data.price;
         this.location = data.location;
         this.date = data.date;

@@ -7,7 +7,7 @@
 </template>
 <script lang="ts">
 import { RouterView } from 'vue-router';
-import Footer from './views/Footer.vue';
+import Footer from '@/views/Footer.vue';
 export default{
     data(){
         return{}
