@@ -1,5 +1,5 @@
 <template>
-    <div class="col-lg-6 col-12">
+    <div class="col-lg-6 col-12" data-bs-toggle="modal" :data-bs-target="`#${modalID}`">
         <div class="dashboard-card p-2 mb-3" :style="`--fromcolor: ${gradient[0]}; --tocolor: ${gradient[1]}`">
             <h3 class="fs-1">{{ title }}</h3>
             <i :class="`bi bi-${icon} display-1`"></i>
@@ -27,7 +27,7 @@
 <script lang="ts">
 export default {
     props: [
-        "cardData"
+        "cardData", "modalID"
     ],
     data() {
         return {
