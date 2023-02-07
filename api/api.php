@@ -5,6 +5,7 @@
 //ACCEPTED HEADERS
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: *');
+header('Access-Control-Allow-Methods: *');
 header('Content-Type: application/JSON; charset=utf-8;');
 include('adatok.php');
 //DB SETUP

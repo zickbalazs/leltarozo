@@ -30,7 +30,7 @@
         },
         methods: {
             GetDataForChart():AxiosResponse<Array<number>>{
-                return db.GetAll('http://localhost/2-14-SZFT')
+                
             }
         },
         components:{

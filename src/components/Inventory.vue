@@ -51,6 +51,18 @@
         },
         methods:{
             Delete(id:number){
+                console.log(id);
+                db.Delete('http://localhost/2-14-SZFT/Backend/PhP/api/api.php', {
+                    table:'tetelek',
+                    id: id.toString()
+                }).then(result=>{
+                    this.Inventory.splice(this.Inventory.map(e=>e.ID).indexOf(id), 1);
+                }).catch(err=>{
+                    alert('Internal server error!');
+                })
+            },
+            Mod(id:number){
+
             }
         },
         computed:{
@@ -69,8 +81,7 @@
         },
         mounted(){
             (document.querySelector('#inventoryModal') as HTMLElement).addEventListener('show.bs.modal', ()=> {
-                this.GetData().then(res=>{
-                    console.log(res.data);
+                db.GetAll('http://localhost/2-14-SZFT/Backend/PhP/api/api.php', {table:'tetelek'}).then(res=>{
                     this.Inventory = res.data;
                 });
             })
@@ -78,4 +89,12 @@
     }
 </script>
 <style>
+.shrink-enter-active, .shrink-leave-active{
+    transition: transform 0.2s;
+    transform:scale(100%);
+}
+.shrink-enter-from,
+.shrink-leave-to {
+    transform: scale(0%);
+}
 </style>
