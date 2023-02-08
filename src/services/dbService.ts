@@ -3,13 +3,18 @@ import type { AxiosPromise } from "axios";
 import axios from 'axios';
 interface params {
     table: string;
-    id?: string | undefined;
+    ID?: string | undefined;
     field?: string | undefined;
     value?: string | undefined;
+    data?: object | undefined;
 }
 interface Delete {
     message: any | undefined;
     deletedRows: number;
+}
+interface Update{
+    message: any | undefined;
+    affectedRows:number;
 }
 function GetAll(url: string, params: params): AxiosPromise < Array < InventoryItem >> {
     return axios.get(url, {
@@ -21,8 +26,11 @@ function Delete(url: string, params: params): AxiosPromise < Delete > {
         data: params
     });
 };
+function Modify(url:string, params:params):AxiosPromise < Update >{
+    return axios.patch(url, params);
+}
 const db = {
-    GetAll, Delete
+    GetAll, Delete, Modify
 }
 
 

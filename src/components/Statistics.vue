@@ -1,15 +1,18 @@
 <template>
     <NavBar />
     <main>
+        <canvas id="chart">
+
+        </canvas>
     </main>
 </template>
 <style>
 </style>
 <script lang="ts">
     import NavBar from '@/views/NavBar.vue';
-    import Chart from '@/views/Chart.vue';
     import { db } from '@/services/dbService';
-    import type { AxiosResponse } from 'axios';
+    import { Chart } from 'chart.js/auto';
+import { ChartData } from '@/classes/ChartData';
     export default{
         data(){
             return{
@@ -26,12 +29,19 @@
             }
         },
         created(){
-            
+        },
+        mounted(){
+            db.GetAll('http://localhost/2-14-SZFT/backend/php/api/api.php', {
+                table:'tetelek'
+            }).then(result=>{
+                this.datas.labels = result.data.map(e=>e.date.toString());
+                this.datas.datasets[0].data = result.data.map(e=>e.price==null?0:e.price);
+                let chartData = new ChartData(this.datas.name, this.datas.ID, this.datas.type, this.datas.labels, this.datas.datasets);
+                console.log(chartData)
+                 new Chart(document.querySelector('#chart') as HTMLCanvasElement, chartData.ChartConfig);
+            });
         },
         methods: {
-            GetDataForChart():AxiosResponse<Array<number>>{
-                
-            }
         },
         components:{
             NavBar,

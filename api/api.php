@@ -59,8 +59,9 @@ function PATCH($db, $data)
             //UPDATE TEXT SETUP
             $updateText = "";
             foreach ($data->data as $key => $dValue){
-                $updateText .= $key . "=" . "'" . $dValue . "'";
+                $updateText .= $key . "=" . "'" . $dValue . "'".",";
             }
+            $updateText = substr($updateText, 0, -1);
             if (CheckIfHasFields($data)){
                 //UPDATE BY FIELD
                 $field = $data->field;
