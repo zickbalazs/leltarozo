@@ -37,8 +37,7 @@ import { ChartData } from '@/classes/ChartData';
                 this.datas.labels = result.data.map(e=>e.date.toString());
                 this.datas.datasets[0].data = result.data.map(e=>e.price==null?0:e.price);
                 let chartData = new ChartData(this.datas.name, this.datas.ID, this.datas.type, this.datas.labels, this.datas.datasets);
-                console.log(chartData)
-                 new Chart(document.querySelector('#chart') as HTMLCanvasElement, chartData.ChartConfig);
+                new Chart(document.querySelector('#chart') as HTMLCanvasElement, chartData.ChartConfig);
             });
         },
         methods: {

@@ -21,11 +21,6 @@ export default {
             ch:{}
         }
     },
-    watch:{
-        'chartdt.datasets'(){
-            console.log('Bruh')
-        }
-    },
     methods:{
     },
     mounted(){
