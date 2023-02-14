@@ -7,6 +7,15 @@
     </main>
 </template>
 <style>
+    main{
+        flex: 1 1 auto;
+        display: flex;
+        flex-flow:column;
+        justify-content: center;
+    }
+    #chart{
+        max-height: 80vh;
+    }
 </style>
 <script lang="ts">
     import NavBar from '@/views/NavBar.vue';
